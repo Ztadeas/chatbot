@@ -33,7 +33,7 @@ labels = np.asarray(label, dtype="float32")
 labels = to_categorical(labels, num_classes=22, dtype="float32")
 
 
-tokenizer = Tokenizer(num_words=30)
+tokenizer = Tokenizer(num_words=len(text)
 tokenizer.fit_on_texts(text)
 seq = tokenizer.texts_to_sequences(text)
 data = pad_sequences(seq, maxlen= 30)
@@ -87,8 +87,8 @@ m.layers[0].trainable = False
 
 m.compile(optimizer=optimizers.Adam(lr=0.001), loss="categorical_crossentropy", metrics=["acc"])
 
-m.fit(data, labels, epochs=50, batch_size=4, validation_split=0.05)
-m.save("chatbotmasta3.h5")
+m.fit(data, labels, epochs=50, batch_size=4, validation_split=0.1)
+m.save("chatbotmasta.h5")
 
 
 
